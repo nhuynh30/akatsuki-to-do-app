@@ -36,16 +36,47 @@ body {
   line-height: 1.5;
 }
 
-.clock {
+.top-bar {
   position: fixed;
   top: 1rem;
   right: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  z-index: 100;
+}
+
+.music-btn {
+  width: 2.25rem;
+  height: 2.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  color: var(--accent);
+  background: rgba(8, 12, 24, 0.7);
+  border: 1px solid rgba(96, 165, 250, 0.3);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: color 0.2s, background 0.2s, border-color 0.2s;
+}
+
+.music-btn:hover {
+  background: rgba(59, 130, 246, 0.2);
+  border-color: var(--accent);
+}
+
+.music-btn.muted {
+  color: var(--text-muted);
+  opacity: 0.7;
+}
+
+.clock {
   font-size: 1rem;
   font-weight: 600;
   color: var(--accent);
   letter-spacing: 0.05em;
   text-shadow: 0 0 12px rgba(59, 130, 246, 0.5);
-  z-index: 100;
 }
 
 .app {

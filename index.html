@@ -10,7 +10,13 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div class="clock" id="clock" aria-live="polite"></div>
+  <audio id="bgMusic" loop>
+    <source src="naruto-main-theme-made-with-Voicemod.mp3" type="audio/mpeg">
+  </audio>
+  <div class="top-bar">
+    <button type="button" class="music-btn" id="musicBtn" aria-label="Play music" title="Music on/off">🔇</button>
+    <div class="clock" id="clock" aria-live="polite"></div>
+  </div>
   <div class="app">
     <header class="header">
       <h1>Todo</h1>
@@ -53,6 +59,25 @@
     }
     updateClock();
     setInterval(updateClock, 1000);
+
+    (function() {
+      const audio = document.getElementById('bgMusic');
+      const btn = document.getElementById('musicBtn');
+      if (!audio || !btn) return;
+      btn.addEventListener('click', function() {
+        if (audio.paused) {
+          audio.play().catch(function() {});
+          btn.classList.remove('muted');
+          btn.textContent = '♪';
+          btn.setAttribute('aria-label', 'Pause music');
+        } else {
+          audio.pause();
+          btn.classList.add('muted');
+          btn.textContent = '🔇';
+          btn.setAttribute('aria-label', 'Play music');
+        }
+      });
+    })();
   </script>
 </body>
 </html>
